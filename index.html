@@ -22,6 +22,7 @@
         <h1>Vue Basics</h1>
         <div id="app">
             <h2>{{ title }}</h2>
+            <p>My Name is {{name}}</p>
             <p>{{ greet('morning') }}</p>
             <!-- same as the v-bind -->
             <a :href="url">You tube</a>
@@ -37,6 +38,8 @@
             <div class="canvas" @mousemove="logCoords">{{coords.x}},{{coords.y}}</div>
             <input type="text" @keyup="updateName">
             <input type="text" @keypress="updateName">
+            <p>Two way data binding</p>
+            <input type="text" v-model="name">
         </div>
 
         <script src="app.js"></script>
