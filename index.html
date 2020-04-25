@@ -35,6 +35,8 @@
             <button @click="logEvent" >Log event Info</button>
 
             <div class="canvas" @mousemove="logCoords">{{coords.x}},{{coords.y}}</div>
+            <input type="text" @keyup="updateName">
+            <input type="text" @keypress="updateName">
         </div>
 
         <script src="app.js"></script>
