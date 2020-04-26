@@ -1,36 +1,46 @@
 <template>
   <div>
-      <h2>{{blogtitle}}</h2>
-      <button @click="changeTitle">Change Title</button>
+    <h2>{{blogtitle}}</h2>
+    <button @click="changeTitle">Change Title</button>
+    <div v-for="post in posts" :key="post.id">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">
+            <h3>{{post.title}}</h3>
+          </span>
+          <p>{{post.body}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-    name:'Blogs',
-    data(){
-        return{
-            blogtitle:'Blogs'
-        }
-    },
-    methods:{
-        changeTitle(){
-            this.blogtitle='Amazing Blog Posts'
-        }
-    },
-    beforeCreate(){
-        alert('beforeCreate  hook')
-    },
-    created(){
-        alert('Created hook')
-    },
-    beforeUpdate(){
-        alert('before Update')
-    }
+import axios from "axios";
 
-}
+export default {
+  name: "Blogs",
+  data() {
+    return {
+      blogtitle: "Blogs",
+      posts: []
+    };
+  },
+  methods: {
+    changeTitle() {
+      this.blogtitle = "Amazing Blog Posts";
+    }
+  },
+  beforeCreate() {},
+  created() {
+    axios.get("http://jsonplaceholder.typicode.com/posts").then(response => {
+      console.log(response);
+      this.posts = response.data;
+    });
+  },
+  beforeUpdate() {}
+};
 </script>
 
 <style>
-
 </style>
