@@ -1,0 +1,43 @@
+<template>
+  <div id="app">
+    <!-- <h1>{{title}}</h1> -->
+    <Navbar/>
+    <AllFriends :friends="friends"/>
+    <OnlineFriends :friends="friends"/>
+  </div>
+</template>
+
+<script>
+import Navbar from './Navbar'
+import AllFriends from './AllFriends'
+import OnlineFriends from './OnlineFriends'
+
+export default {
+  name: 'app',
+  components:{
+    Navbar,
+    AllFriends,
+    OnlineFriends
+  },
+  data () {
+    return {
+      title : 'Welcome to my first VUE app :)',
+       friends: [
+        { name: "Naya", online: true },
+        { name: "Wara", online: false },
+        { name: "Chuti", online: true },
+        { name: "Janiya", online: false },
+        { name: "Nippa", online: true }
+      ]
+    }
+  }
+}
+</script>
+
+<style>
+  h1{
+    color: aquamarine;
+    font-weight: normal;
+    text-align: center;
+  }
+</style>
