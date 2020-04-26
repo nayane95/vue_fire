@@ -8,7 +8,7 @@
           <span class="card-title">
             <h3>{{post.title}}</h3>
           </span>
-          <p>{{post.body}}</p>
+          <p>{{post.body | snippet }}</p>
         </div>
       </div>
     </div>
