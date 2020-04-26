@@ -1,8 +1,11 @@
 <template>
   <div>
+     
     <h2>{{blogtitle}}</h2>
     <button @click="changeTitle">Change Title</button>
-    <div v-for="post in posts" :key="post.id">
+     <input type="text" v-model="searchTerm">
+    <!-- <div v-for="post in posts" :key="post.id"> -->
+    <div v-for="post in filtreredPosts" :key="post.id">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title">
@@ -23,7 +26,8 @@ export default {
   data() {
     return {
       blogtitle: "Blogs",
-      posts: []
+      posts: [],
+      searchTerm : ''
     };
   },
   methods: {
@@ -38,7 +42,15 @@ export default {
       this.posts = response.data;
     });
   },
-  beforeUpdate() {}
+  beforeUpdate() {},
+  computed:{
+      filtreredPosts(){
+         
+          return this.posts.filter(post=>{
+              return post.title.match(this.searchTerm)
+          })
+      }
+  }
 };
 </script>
 
