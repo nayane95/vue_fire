@@ -1,14 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Profile from '../views/Profile.vue'
+import ViewProfile from '../components/ViewProfile.vue'
 
 Vue.use(VueRouter)
-
+  
   const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/profile/:user_id',
+    name: 'Profile',
+    component: Profile
+  },
+  {
+    path: '/view_profile/:user_id',
+    name: 'ViewProfile',
+    component: ViewProfile
   },
   {
     path: '/about',
@@ -21,7 +33,9 @@ Vue.use(VueRouter)
 ]
 
 const router = new VueRouter({
+  mode:'history',
   routes
+
 })
 
 export default router
